@@ -1,3 +1,6 @@
+import {config} from './config.js';
+
+
 window.addEventListener('load', () => {
     let long;
     let lat;
@@ -7,7 +10,11 @@ window.addEventListener('load', () => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const API_Key = 'd1b48272a1eb98ad81a7cf7573787634'
+            const API_Key = config.API_KEY;
+
+            // PROXY to prevent CORS 
+            const proxy = 'https://cors-anywhere.herokuapp.com';
+            // const api = ${proxy}`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_Key}`
 
             const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_Key}`
 
