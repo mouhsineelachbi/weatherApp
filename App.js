@@ -42,8 +42,8 @@ window.addEventListener('load', () =>
                 temperatureDegree.textContent = current.temperature;
                 temperatureDescription.textContent = current.weather_descriptions[0];
                 locationTimezone.textContent = location.timezone_id;
-                // FORMULA FOR CELICIUS
-                let Fahrenheit = current.temperature*(5/9) + 32;
+                // FORMULA FOR Fahrenheit
+                let Fahrenheit = Math.floor(current.temperature*(5/9)) + 32;
                 // set Icon
                 const icon = data.current.weather_descriptions[0];
                 setIcons(icon, document.querySelector('.icon'))
@@ -54,11 +54,12 @@ window.addEventListener('load', () =>
                     {
                         temperatureSpan.textContent = 'C';
                         temperatureDegree.textContent = current.temperature;
+                        console.log(current.temperature);
                     }
                     else
                     {
                         temperatureSpan.textContent = 'F';
-                        temperatureDegree.textContent = Math.floor(Fahrenheit);
+                        temperatureDegree.textContent = Fahrenheit;
                     }
                 })
             })
